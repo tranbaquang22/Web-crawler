@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Web Crawler{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Web Crawler Dashboard</h1>
+<hr>
+
+<!-- Bảng hiển thị các dependencies -->
+<h3 class="mt-4">Analysis Results</h3>
+<table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>Project Name</th>
+            <th>Dependency Name</th>
+            <th>Version</th>
+            <th>Install Command</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dep in dependencies %}
+        <tr>
+            <td>{{ dep.project.name }}</td>
+            <td>{{ dep.name }}</td>
+            <td>{{ dep.version }}</td>
+            <td><code>{{ dep.install_command }}</code></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="text-center">No dependencies found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Bảng hiển thị các URL đã phân tích -->
+<h3 class="mt-4">Analyzed URLs</h3>
+<table class="table table-bordered table-striped mt-3">
+    <thead class="table-dark">
+        <tr>
+            <th>URL</th>
+            <th>Asset Type</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for analyzed_url in analyzed_urls %}
+            {% for asset in analyzed_url.assets.all %}
+            <tr>
+                <td><a href="{{ analyzed_url.url }}" target="_blank">{{ analyzed_url.url }}</a></td>
+                <td>{{ asset.asset_type }}</td>
+                <td><a href="{{ asset.link }}" target="_blank">{{ asset.link }}</a></td>
+            </tr>
+            {% endfor %}
+        {% empty %}
+        <tr>
+            <td colspan="3" class="text-center">No analyzed URLs found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

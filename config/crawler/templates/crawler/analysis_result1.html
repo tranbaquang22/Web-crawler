@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results{% endblock %}
+
+{% block content %}
+<h3>Analysis Results</h3>
+<hr>
+
+<!-- Hiển thị URL đã phân tích -->
+<h5>Analyzed URL:</h5>
+<p><a href="{{ url }}" target="_blank">{{ url }}</a></p>
+
+<!-- Hiển thị tài nguyên -->
+{% if assets %}
+    <h5>Assets Found:</h5>
+    <!-- Bảng CSS -->
+    {% if assets.css_links %}
+        <h6>CSS Files:</h6>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for css in assets.css_links %}
+                <tr>
+                    <td><a href="{{ css }}" target="_blank">{{ css }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <!-- Bảng JavaScript -->
+    {% if assets.js_links %}
+        <h6>JavaScript Files:</h6>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for js in assets.js_links %}
+                <tr>
+                    <td><a href="{{ js }}" target="_blank">{{ js }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <!-- Bảng Images -->
+    {% if assets.image_links %}
+        <h6>Images:</h6>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for img in assets.image_links %}
+                <tr>
+                    <td><a href="{{ img }}" target="_blank">{{ img }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <!-- Bảng Favicons -->
+    {% if assets.favicon_links %}
+        <h6>Favicons:</h6>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for favicon in assets.favicon_links %}
+                <tr>
+                    <td><a href="{{ favicon }}" target="_blank">{{ favicon }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% else %}
+    <p>No assets found or analysis failed.</p>
+{% endif %}
+{% endblock %}

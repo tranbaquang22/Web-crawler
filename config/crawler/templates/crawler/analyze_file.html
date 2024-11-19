@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Analyze File{% endblock %}
+
+{% block content %}
+<h3>Analyze New File</h3>
+<form method="post" enctype="multipart/form-data" action="{% url 'analyze_file' %}">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="project_name" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="project_name" name="project_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="config_file" class="form-label">Upload Configuration File</label>
+        <input type="file" class="form-control" id="config_file" name="config_file" required>
+    </div>
+    <button type="submit" class="btn btn-success">Analyze</button>
+</form>
+{% endblock %}

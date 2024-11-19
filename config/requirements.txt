@@ -1,0 +1,7 @@
+django
+beautifulsoup4
+requests
+matplotlib
+networkx
+
+
