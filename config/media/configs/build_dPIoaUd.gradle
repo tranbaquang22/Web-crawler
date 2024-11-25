@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework:spring-core:5.3.22'
+    implementation 'org.springframework:spring-context:5.3.22'
+    testImplementation 'junit:junit:4.13.2'
+}

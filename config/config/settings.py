@@ -28,7 +28,8 @@ SECRET_KEY = 'django-insecure-zvkt-pzgkt*_vjwxzm&wu+36+b1!((pv^snz2c%-f+a9+yhexr
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['145.223.21.6', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -124,6 +125,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 # Đường dẫn URL để truy cập file media
 MEDIA_URL = '/media/'
+STATIC_ROOT = '/usr/local/lsws/Example/Web-crawler/static/'
+MEDIA_ROOT = '/usr/local/lsws/Example/Web-crawler/media/'
 
 # Đường dẫn thư mục lưu trữ file media trên hệ thống
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
